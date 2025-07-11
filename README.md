@@ -25,6 +25,17 @@ This sample implements the latest [MCP Authorization specification](https://mode
 
 This is a [sequence diagram](infra/app/apim-oauth/diagrams/diagrams.md) to understand the flow.
 
+## Pre-reqs (sunrise)
+
+- Update main.bicep parameters to conform to naming schema for project (see lines 18 through 43)
+- Wipe out .azure if redeploying
+
+* environmentName and location specifically
+* crypto script and managed identity can be deleted after deployment
+
+## Post deployment
+-- apimGenCryptoValues and managed identity can be deleted afterwards
+
 ## Deploy Remote MCP Server to Azure
 
 Run this [azd](https://aka.ms/azd) command to provision the api management service, web app(with code) and all other required Azure resources

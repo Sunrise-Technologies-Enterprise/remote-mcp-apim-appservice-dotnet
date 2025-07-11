@@ -57,7 +57,7 @@ resource cryptoScriptApimRoleAssignment 'Microsoft.Authorization/roleAssignments
 // Using a deployment script to generate cryptographically secure values for AES encryption
 // Key is 32 bytes (256-bit) and IV is 16 bytes (128-bit)
 resource cryptoValuesScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'generateCryptoValues'
+  name: 'apimGenCryptoValues'
   location: location
   kind: 'AzurePowerShell'
   identity: {

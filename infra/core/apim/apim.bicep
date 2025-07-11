@@ -47,7 +47,7 @@ param appInsightsInstrumentationKey string = ''
 param appInsightsId string = ''
 
 @description('The name of the user-assigned managed identity used as entra app FIC')
-param entraAppUserAssignedIdentityName string = 'entra-app-user-assigned-identity'
+param entraAppUserAssignedIdentityName string = apiManagementName //'entra-app-user-assigned-identity'
 
 // ------------------
 //    VARIABLES

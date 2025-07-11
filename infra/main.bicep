@@ -1,8 +1,8 @@
 targetScope = 'subscription'
 
 @minLength(1)
-@maxLength(64)
-@description('Name of the the environment which is used to generate a short unique hash used in all resources.')
+@maxLength(59)
+@description('Name of the resource group and objects to be created')
 param environmentName string
 
 
@@ -14,15 +14,35 @@ param environmentName string
     type: 'location'
   }
 })
-param location string
-param apiServiceName string = ''
-param apiUserAssignedIdentityName string = ''
-param applicationInsightsName string = ''
-param appServicePlanName string = ''
-param logAnalyticsName string = ''
-param resourceGroupName string = ''
-param mcpEntraApplicationDisplayName string = ''
-param mcpEntraApplicationUniqueName string = ''
+
+//param environmentName string = 'sun-ai-internal-dev'
+param location string //= 'eastus2'
+
+// Resource group name
+param resourceGroupName string = environmentName
+
+// Default web app name
+param apiServiceName string = 'example-mcp-${environmentName}'
+
+// APIM user managed identity
+param apiUserAssignedIdentityName string = 'apim-${environmentName}'
+
+// Application insights name
+param applicationInsightsName string = environmentName
+
+// App services plan for web app name
+param appServicePlanName string = environmentName
+
+// Log Analytics workspace name
+param logAnalyticsName string = environmentName
+
+// APIM Oauth app registration name
+param mcpEntraApplicationDisplayName string = 'apim-oauth-mcp-${environmentName}'
+param mcpEntraApplicationUniqueName string = 'apim-oauth-mcp-${environmentName}'
+
+// APIM name
+var apiManagementName = 'apim-${environmentName}'
+
 param disableLocalAuth bool = true
 
 // MCP Client APIM gateway specific variables
@@ -44,7 +64,6 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 }
 
 var apimResourceToken = toLower(uniqueString(subscription().id, resourceGroupName, environmentName, location))
-var apiManagementName = '${abbrs.apiManagementService}${apimResourceToken}'
 
 // apim service deployment
 module apimService './core/apim/apim.bicep' = {
