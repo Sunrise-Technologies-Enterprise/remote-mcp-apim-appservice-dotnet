@@ -22,7 +22,7 @@ param location string //= 'eastus2'
 param resourceGroupName string = environmentName
 
 // Default web app name
-param apiServiceName string = 'example-mcp-${environmentName}'
+param apiServiceName string = environmentName
 
 // APIM user managed identity
 param apiUserAssignedIdentityName string = 'apim-${environmentName}'
@@ -37,8 +37,8 @@ param appServicePlanName string = environmentName
 param logAnalyticsName string = environmentName
 
 // APIM Oauth app registration name
-param mcpEntraApplicationDisplayName string = 'apim-oauth-mcp-${environmentName}'
-param mcpEntraApplicationUniqueName string = 'apim-oauth-mcp-${environmentName}'
+param mcpEntraApplicationDisplayName string = 'apim-oauth-${environmentName}'
+param mcpEntraApplicationUniqueName string = 'apim-oauth-${environmentName}'
 
 // APIM name
 var apiManagementName = 'apim-${environmentName}'
