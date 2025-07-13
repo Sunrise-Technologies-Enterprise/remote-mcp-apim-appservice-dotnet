@@ -37,8 +37,8 @@ param appServicePlanName string = environmentName
 param logAnalyticsName string = environmentName
 
 // APIM Oauth app registration name
-param mcpEntraApplicationDisplayName string = 'apim-oauth-${environmentName}'
-param mcpEntraApplicationUniqueName string = 'apim-oauth-${environmentName}'
+param mcpEntraApplicationDisplayName string = '${environmentName}-apim-oauth'
+param mcpEntraApplicationUniqueName string = '${environmentName}-apim-oauth'
 
 // APIM name
 var apiManagementName = 'apim-${environmentName}'
