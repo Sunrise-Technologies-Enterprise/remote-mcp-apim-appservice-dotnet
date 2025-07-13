@@ -31,7 +31,6 @@ This is a [sequence diagram](infra/app/apim-oauth/diagrams/diagrams.md) to under
 - Wipe out .azure if redeploying
 
 * environmentName and location specifically
-* crypto script and managed identity can be deleted after deployment
 
 ## Post deployment
 -- apimGenCryptoValues and managed identity can be deleted afterwards
